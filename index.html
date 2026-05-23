@@ -1,12 +1,16 @@
-<!-- path: alm_download/ui_demo/index.html -->
+<!-- path: alm_download/index.html -->
 
 <!DOCTYPE html>
 <html>
 <body>
   <h2>ALM Download Demo</h2>
+
   <input id="url" placeholder="File URL" />
   <button id="start">Start</button>
+
   <pre id="log"></pre>
-  <script src="app.js"></script>
+
+  <!-- أهم شيء: تحميل app.js من ui_demo -->
+  <script type="module" src="ui_demo/app.js"></script>
 </body>
 </html>
