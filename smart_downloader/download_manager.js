@@ -1,29 +1,27 @@
-/* path: alm_download/smart_downloader/download_manager.js */
-
 export class DownloadManager {
-
   async download(url, log = console.log) {
     try {
       log("🔍 Checking URL...");
 
-      if (!url.startsWith("https://")) {
-        throw new Error("الرابط يجب أن يبدأ بـ HTTPS");
+      // السماح بـ http و https
+      if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        throw new Error("الرابط يجب أن يبدأ بـ http أو https");
       }
 
       log("🌐 Sending request...");
 
-      const res = await fetch(url);
+      const response = await fetch(url);
 
-      if (!res.ok) {
-        throw new Error(`فشل التحميل: ${res.status} ${res.statusText}`);
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
       }
 
       log("⬇️ Downloading file...");
 
-      const buf = await res.arrayBuffer();
+      const buffer = await response.arrayBuffer();
 
       log("✅ File downloaded successfully.");
-      return buf;
+      return buffer;
 
     } catch (err) {
       log("❌ ERROR: " + err.message);
