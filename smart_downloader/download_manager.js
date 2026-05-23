@@ -6,7 +6,6 @@ export class DownloadManager {
     try {
       log("🔍 Checking URL...");
 
-      // التحقق من أن الرابط يبدأ بـ https
       if (!url.startsWith("https://")) {
         throw new Error("الرابط يجب أن يبدأ بـ HTTPS");
       }
@@ -15,7 +14,6 @@ export class DownloadManager {
 
       const res = await fetch(url);
 
-      // إذا فشل الطلب
       if (!res.ok) {
         throw new Error(`فشل التحميل: ${res.status} ${res.statusText}`);
       }
